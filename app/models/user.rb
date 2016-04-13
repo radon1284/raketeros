@@ -43,4 +43,11 @@ class User < ActiveRecord::Base
 
   devise authentication_keys: [:login]
   acts_as_votable 
+
+  after_create :build_profile
+
+  def build_profile
+    Profile.create(user: self) # Associations must be defined correctly for this syntax, avoids using ID's directly.
+  end
+  
 end
