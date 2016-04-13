@@ -5,4 +5,5 @@ class Profile < ActiveRecord::Base
   has_many :projects
   has_many :educations
   has_many :skills
+  acts_as_votable 
 end
