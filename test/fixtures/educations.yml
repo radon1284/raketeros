@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  school_name: MyString
+  course: MyString
+  field_of_study: MyString
+  year_graduated: MyText
+  profile_id: 
+
+two:
+  school_name: MyString
+  course: MyString
+  field_of_study: MyString
+  year_graduated: MyText
+  profile_id: 
