@@ -1,18 +1,52 @@
-<%= simple_form_for(@experience) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :work_position %>
-    <%= f.input :company_name %>
-    <%= f.input :date_started %>
-    <%= f.input :date_ended %>
-    <%= f.input :time_in_service %>
-    <%= f.association :profile %>
-    <%= f.input :company_description %>
-    <%= f.input :company_image %>
+<%= form_for @experience, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :work_position, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :work_position, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :company_name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :company_name, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :date_started, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.datetime_select :date_started, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :date_ended, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.datetime_select :date_ended, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :time_in_service, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :time_in_service, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :company_description, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :company_description, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :company_image, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :company_image, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  experiences_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

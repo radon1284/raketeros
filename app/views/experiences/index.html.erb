@@ -1,39 +1,48 @@
-<h1>Listing experiences</h1>
-
-<table>
+<%- model_class = Experience -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Experience %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Work position</th>
-      <th>Company name</th>
-      <th>Date started</th>
-      <th>Date ended</th>
-      <th>Time in service</th>
-      <th>Profile</th>
-      <th>Company description</th>
-      <th>Company image</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:work_position) %></th>
+      <th><%= model_class.human_attribute_name(:company_name) %></th>
+      <th><%= model_class.human_attribute_name(:date_started) %></th>
+      <th><%= model_class.human_attribute_name(:date_ended) %></th>
+      <th><%= model_class.human_attribute_name(:time_in_service) %></th>
+      <th><%= model_class.human_attribute_name(:company_description) %></th>
+      <th><%= model_class.human_attribute_name(:company_image) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @experiences.each do |experience| %>
       <tr>
+        <td><%= experience.id %></td>
         <td><%= experience.work_position %></td>
         <td><%= experience.company_name %></td>
         <td><%= experience.date_started %></td>
         <td><%= experience.date_ended %></td>
         <td><%= experience.time_in_service %></td>
-        <td><%= experience.profile %></td>
         <td><%= experience.company_description %></td>
         <td><%= experience.company_image %></td>
-        <td><%= link_to 'Show', experience %></td>
-        <td><%= link_to 'Edit', edit_experience_path(experience) %></td>
-        <td><%= link_to 'Destroy', experience, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l experience.created_at, format: :long %></td>
+        <td>
+          <%= link_to experience_path(experience), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to experience_path(experience), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Experience', new_experience_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_experience_path,
+            :class => 'btn btn-primary' %>
