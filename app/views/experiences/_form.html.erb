@@ -1,0 +1,18 @@
+<%= simple_form_for(@experience) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :work_position %>
+    <%= f.input :company_name %>
+    <%= f.input :date_started %>
+    <%= f.input :date_ended %>
+    <%= f.input :time_in_service %>
+    <%= f.association :profile %>
+    <%= f.input :company_description %>
+    <%= f.input :company_image %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
