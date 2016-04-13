@@ -54,6 +54,9 @@ gem 'bootstrap-sass-extras'
 gem 'acts_as_votable', github: 'ryanto/acts_as_votable'
 gem 'validates_formatting_of'
 gem 'tzinfo-data'
+gem 'carrierwave'
+gem "fog"
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 group :development do
   gem 'better_errors'
