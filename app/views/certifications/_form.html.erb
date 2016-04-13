@@ -1,0 +1,15 @@
+<%= simple_form_for(@certification) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :profile %>
+    <%= f.input :certification_name %>
+    <%= f.input :certification_authority %>
+    <%= f.input :certification_url %>
+    <%= f.input :certification_image %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
