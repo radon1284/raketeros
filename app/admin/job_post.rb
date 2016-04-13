@@ -1,4 +1,5 @@
 ActiveAdmin.register JobPost do
+  permit_params :company_name, :job_title, :salary, :location, :job_description, :job_benefits, :contact_email, :website, :phone
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
