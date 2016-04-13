@@ -1,33 +1,42 @@
-<h1>Listing educations</h1>
-
-<table>
+<%- model_class = Education -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Education %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>School name</th>
-      <th>Course</th>
-      <th>Field of study</th>
-      <th>Year graduated</th>
-      <th>Profile</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:school_name) %></th>
+      <th><%= model_class.human_attribute_name(:course) %></th>
+      <th><%= model_class.human_attribute_name(:field_of_study) %></th>
+      <th><%= model_class.human_attribute_name(:year_graduated) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @educations.each do |education| %>
       <tr>
+        <td><%= education.id %></td>
         <td><%= education.school_name %></td>
         <td><%= education.course %></td>
         <td><%= education.field_of_study %></td>
         <td><%= education.year_graduated %></td>
-        <td><%= education.profile %></td>
-        <td><%= link_to 'Show', education %></td>
-        <td><%= link_to 'Edit', edit_education_path(education) %></td>
-        <td><%= link_to 'Destroy', education, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l education.created_at, format: :long %></td>
+        <td>
+          <%= link_to education_path(education), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to education_path(education), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Education', new_education_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_education_path,
+            :class => 'btn btn-primary' %>
