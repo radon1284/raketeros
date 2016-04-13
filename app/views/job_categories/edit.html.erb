@@ -1,6 +1,5 @@
-<h1>Editing job_category</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @job_category %> |
-<%= link_to 'Back', job_categories_path %>
+<%- model_class = JobCategory -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => JobCategory %></h1>
+</div>
+<%= render :partial => 'form' %>
