@@ -1,54 +1,40 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = JobPost -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => JobPost %></h1>
+</div>
 
-<p>
-  <strong>Company name:</strong>
-  <%= @job_post.company_name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:company_name) %></dt>
+      <dd><pre class="prettyprint"><%= @job_post.company_name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:job_title) %></dt>
+      <dd><pre class="prettyprint"><%= @job_post.job_title %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:salary) %></dt>
+      <dd><pre class="prettyprint"><%= @job_post.salary %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:location) %></dt>
+      <dd><pre class="prettyprint"><%= @job_post.location %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:job_description) %></dt>
+      <dd><pre class="prettyprint"><%= @job_post.job_description %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:job_benefits) %></dt>
+      <dd><pre class="prettyprint"><%= @job_post.job_benefits %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:contact_email) %></dt>
+      <dd><pre class="prettyprint"><%= @job_post.contact_email %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:website) %></dt>
+      <dd><pre class="prettyprint"><%= @job_post.website %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:phone) %></dt>
+      <dd><pre class="prettyprint"><%= @job_post.phone %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Job title:</strong>
-  <%= @job_post.job_title %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              job_posts_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_job_post_path(@job_post), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              job_post_path(@job_post),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Salary:</strong>
-  <%= @job_post.salary %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @job_post.location %>
-</p>
-
-<p>
-  <strong>Job description:</strong>
-  <%= @job_post.job_description %>
-</p>
-
-<p>
-  <strong>Job benefits:</strong>
-  <%= @job_post.job_benefits %>
-</p>
-
-<p>
-  <strong>Contact email:</strong>
-  <%= @job_post.contact_email %>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= @job_post.website %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @job_post.phone %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @job_post.user %>
-</p>
-
-<%= link_to 'Edit', edit_job_post_path(@job_post) %> |
-<%= link_to 'Back', job_posts_path %>
