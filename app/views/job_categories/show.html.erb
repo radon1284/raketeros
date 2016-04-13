@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @job_category.category %>
+</p>
+
+<%= link_to 'Edit', edit_job_category_path(@job_category) %> |
+<%= link_to 'Back', job_categories_path %>
