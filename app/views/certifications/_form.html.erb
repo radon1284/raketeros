@@ -1,15 +1,34 @@
-<%= simple_form_for(@certification) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.association :profile %>
-    <%= f.input :certification_name %>
-    <%= f.input :certification_authority %>
-    <%= f.input :certification_url %>
-    <%= f.input :certification_image %>
+<%= form_for @certification, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :certification_name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :certification_name, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :certification_authority, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :certification_authority, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :certification_url, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :certification_url, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :certification_image, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :certification_image, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  certifications_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
